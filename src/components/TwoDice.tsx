@@ -21,8 +21,20 @@ export function TwoDice(): React.JSX.Element {
         <div>
             <span data-testid="left-die">{leftDie}</span>
             <span data-testid="right-die">{rightDie}</span>
-            <Button onClick={() => setLeftDie(d6())}>Roll Left</Button>
-            <Button onClick={() => setRightDie(d6())}>Roll Right</Button>
+            <Button
+                onClick={() => {
+                    setLeftDie(d6());
+                }}
+            >
+                Roll Left
+            </Button>
+            <Button
+                onClick={() => {
+                    setRightDie(d6());
+                }}
+            >
+                Roll Right
+            </Button>
             {isMatching && !isSnakeEyes && <div>Win</div>}
             {isMatching && isSnakeEyes && <div>Lose</div>}
         </div>

@@ -24,10 +24,18 @@ export function CycleHoliday(): React.JSX.Element {
     return (
         <div>
             <div>Holiday: {holiday}</div>
-            <Button onClick={() => setHoliday(nextAlphabetHoliday[holiday])}>
+            <Button
+                onClick={() => {
+                    setHoliday(nextAlphabetHoliday[holiday]);
+                }}
+            >
                 Advance by Alphabet
             </Button>
-            <Button onClick={() => setHoliday(nextYearHoliday[holiday])}>
+            <Button
+                onClick={() => {
+                    setHoliday(nextYearHoliday[holiday]);
+                }}
+            >
                 Advance by Year
             </Button>
         </div>
