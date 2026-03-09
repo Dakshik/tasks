@@ -29,6 +29,14 @@ function App(): React.JSX.Element {
             <TwoDice></TwoDice>
             <hr />
             <CycleHoliday></CycleHoliday>
+            <hr />
+            <DoubleHalf></DoubleHalf>
+            <hr />
+            <ChooseTeam></ChooseTeam>
+            <hr />
+            <ColoredBox></ColoredBox>
+            <hr />
+            <ShoveBox></ShoveBox>
         </div>
     );
 }
