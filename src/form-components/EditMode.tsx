@@ -3,8 +3,9 @@ import { Form } from "react-bootstrap";
 
 export function EditMode(): React.JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
-    const [name, setName] = useState<string>("Your Name");
+    const [name, setName] = useState<string>("");
     const [isStudent, setIsStudent] = useState<boolean>(true);
+    const displayedName = name || "Your Name";
 
     return (
         <div>
@@ -20,6 +21,8 @@ export function EditMode(): React.JSX.Element {
             {editMode ? (
                 <div>
                     <Form.Control
+                        aria-label="Name"
+                        placeholder="Your Name"
                         value={name}
                         onChange={(
                             event: React.ChangeEvent<HTMLInputElement>,
@@ -30,6 +33,7 @@ export function EditMode(): React.JSX.Element {
                     <Form.Check
                         type="checkbox"
                         label="Student"
+                        aria-label="Student"
                         checked={isStudent}
                         onChange={(
                             event: React.ChangeEvent<HTMLInputElement>,
@@ -40,7 +44,7 @@ export function EditMode(): React.JSX.Element {
                 </div>
             ) : (
                 <div>
-                    {name} is {isStudent ? "a student" : "not a student"}
+                    {displayedName} is {isStudent ? "a student" : "not a student"}
                 </div>
             )}
         </div>
