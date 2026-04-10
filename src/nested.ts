@@ -226,16 +226,13 @@ export function editOption(
 export function duplicateQuestionInArray(
     questions: Question[],
     targetId: number,
-    newId: number
+    newId: number,
 ): Question[] {
-    const result: Question[] = [];
-
-    for (const q of questions) {
-        result.push(q);
-
-        if (q.id === targetId) {
-            result.push(duplicateQuestion(newId, q));        }
-    }
-
-    return result;
+    return questions.reduce((acc: Question[], question) => {
+        if (question.id === targetId) {
+            return [...acc, question, duplicateQuestion(newId, question)];
+        }
+        return [...acc, question];
+    }, []);
 }
+
