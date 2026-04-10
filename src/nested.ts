@@ -110,7 +110,11 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return questions.map((q) => ({ ...q, published: true }));
+    return questions.map((q) => ({
+        ...q,
+        options: [...q.options],
+        published: true
+    }));
 }
 
 /***
@@ -150,7 +154,7 @@ export function renameQuestionById(
     newName: string
 ): Question[] {
     return questions.map((q) =>
-        q.id === targetId ? { ...q, name: newName } : q
+        q.id === targetId ? { ...q, options: [...q.options], name: newName } : q
     );
 }
 
@@ -172,7 +176,9 @@ export function changeQuestionTypeById(
         }
 
         const newOptions =
-            newQuestionType === "multiple_choice_question" ? q.options : [];
+            newQuestionType === "multiple_choice_question"
+                ? [...q.options]
+                : [];
 
         return {
             ...q,
